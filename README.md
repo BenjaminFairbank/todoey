@@ -4,8 +4,8 @@ A to-do list mobile and web application built with the help of Udemy's Complete 
 
 ## Dependencies:
 
-Flutter 2.0.0
-Dart 2.12.0
+    - Flutter 2.0.0
+    - Dart 2.12.0
 
 ...
 
