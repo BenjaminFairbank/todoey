@@ -1,6 +1,14 @@
-# todoey
+# Todoey
 
-A new Flutter application.
+A to-do list mobile and web application built with the help of Udemy's Complete 2021 Flutter Development Bootcamp.
+
+## Dependencies:
+
+Flutter 2.0.0
+Dart 2.12.0
+
+...
+
 
 ## Getting Started
 
