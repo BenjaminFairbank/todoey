@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-import 'task_tile.dart';
 import 'package:todoey/models/task.dart';
+import 'task_tile.dart';
 
-class TasksList extends StatefulWidget {
-  @override
-  _TasksListState createState() => _TasksListState();
-}
+class TasksList extends StatelessWidget {
 
-class _TasksListState extends State<TasksList> {
-  List<Task> tasks = [
-    Task(name: 'Buy Milk'),
-    Task(name: 'Buy Eggs'),
-    Task(name: 'Buy Bread')
-  ];
+  final List<Task> tasks;
+  final Function checkFunction;
+
+  TasksList({@required this.tasks, @required this.checkFunction});
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +16,8 @@ class _TasksListState extends State<TasksList> {
         return TaskTile(
           taskTitle: tasks[index].name,
           isChecked: tasks[index].isDone,
-          checkboxCallback: (bool checkboxState) {
-            setState(() {
-              tasks[index].toggleDone();
-            });
+          checkboxCallback: (bool checkBoxState) {
+            checkFunction(index);
           },
         );
       },
