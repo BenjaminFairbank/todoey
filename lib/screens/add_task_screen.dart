@@ -45,12 +45,16 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               },
             ),
             SizedBox(height: 10.0),
-            FlatButton(
+            TextButton(
               onPressed: () {
-                Provider.of<TaskData>(context, listen: false).addTask(taskText);
-                Navigator.pop(context);
+                if (taskText != '') {
+                  Provider.of<TaskData>(context, listen: false).addTask(taskText);
+                  Navigator.pop(context);
+                }
               },
-              color: Colors.lightBlueAccent,
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.lightBlueAccent)
+              ),
               child: Text(
                 'Add',
                 style: TextStyle(
