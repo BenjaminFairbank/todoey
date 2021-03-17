@@ -1,28 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:todoey/widgets/tasks_list.dart';
 import 'add_task_screen.dart';
-import 'package:todoey/models/task.dart';
+import 'package:todoey/models/task_data.dart';
+import 'package:provider/provider.dart';
 
-class TasksScreen extends StatefulWidget {
-  @override
-  _TasksScreenState createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-
-  List<Task> tasks = [];
-
-  void addTask(String taskText) {
-    setState(() {
-      tasks.add(Task(name: taskText));
-    });
-  }
-
-  void checkOffTask(int index) {
-    setState(() {
-      tasks[index].toggleDone();
-    });
-  }
+class TasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +21,7 @@ class _TasksScreenState extends State<TasksScreen> {
                 padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom,
                 ),
-                child: AddTaskScreen(addTask: addTask),
+                child: AddTaskScreen(),
               ),
             ),
           );
@@ -76,7 +58,7 @@ class _TasksScreenState extends State<TasksScreen> {
                 ),
               ),
               Text(
-                '12 Tasks',
+                '${Provider.of<TaskData>(context).taskCount} task${Provider.of<TaskData>(context).taskCount == 1 ? '' : 's'}',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18.0,
@@ -95,7 +77,7 @@ class _TasksScreenState extends State<TasksScreen> {
                 topRight: Radius.circular(20.0),
               ),
             ),
-            child: TasksList(checkFunction: checkOffTask, tasks: tasks,),
+            child: TasksList(),
           ),
         )
       ]),
